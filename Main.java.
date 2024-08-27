@@ -1,0 +1,46 @@
+import modelos.Paciente;
+import javax.swing.JOptionPane;
+
+public class  Main {
+    public static void main(String[] args) {
+       try {
+
+          // atributos
+          String nomeCompleto = "";
+          int peso = 0;
+          float altura = 0;
+          String sexo = "";
+
+          Paciente pessoa = new Paciente();
+          pessoa.setNomeCompleto(JOptionPane.showInputDialog("Digite seu nome: "));
+
+          //Parse int para converter de string para inteiro
+          pessoa.setPeso(Integer.parseInt(JOptionPane.showInputDialog("Digite seu peso")));
+          //Parse float para converter de string para ponto flutuante
+          pessoa.setAltura(Float.parseFloat(JOptionPane.showInputDialog("Digite sua altura")));
+
+          pessoa.setSexo(JOptionPane.showInputDialog("Digite seu sexo: "));
+
+          String saida = "CLINICA DA RAFA \n";
+          saida += "DADOS DO PACIENTE \n";
+          saida += "Nome completo: " + pessoa.getNomeCompleto() + "\n";
+          saida += "Peso: " + pessoa.getPeso() + "\n";
+          saida += "Altura: " + pessoa.getAltura() + "\n";
+          saida += "Sexo: " + pessoa.getSexo() + "\n";
+
+          // Chamada da funçao presente em Paciente para Calcular IMC
+          saida += "IMC: " + pessoa.calcularImc() + "\n";
+
+          // Chamada da função presente em Paciente para Calcular Faixa de Peso
+          saida += "Faixa: " + pessoa.calcularFaixaDePeso() + "\n";
+
+          // Chamada da função presente em Paciente para Calcular Faixa de Peso  Ideal
+
+          saida += "Peso ideal: " + pessoa.calcularPesoIdeal() + "\n";
+          JOptionPane.showMessageDialog(null, saida);
+       }
+
+  catch(Exception erro) {
+          JOptionPane.showMessageDialog(null, erro.getMessage()); }
+    }
+}
